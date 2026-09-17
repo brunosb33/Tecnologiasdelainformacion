@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta educativa: BT Tecnologías de la Información</title>
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bordo: #6e1423;
+    --bordo-oscuro: #4a0d18;
+    --bordo-claro: #8c1f30;
+    --dorado: #c9a227;
+    --dorado-claro: #e6c65c;
+    --blanco: #ffffff;
+    --crema: #faf6ee;
+    --texto: #2a1a12;
+    --texto-suave: #5a4a40;
+    --sombra: 0 10px 30px rgba(74,13,24,0.15);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Source Sans 3', sans-serif;
+    color:var(--texto);
+    background:var(--crema);
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins', sans-serif;
+    margin:0 0 .5em 0;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Header */
+  header{
+    background:var(--blanco);
+    border-bottom:4px solid var(--dorado);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 14px rgba(0,0,0,0.06);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:14px 24px;
+    max-width:1100px;
+    margin:0 auto;
+    flex-wrap:wrap;
+  }
+  .header-inner img{
+    height:58px;
+    width:58px;
+    object-fit:contain;
+    flex-shrink:0;
+  }
+  .header-text{flex:1; min-width:200px;}
+  .header-text .kicker{
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:.72rem;
+    color:var(--dorado);
+    font-weight:700;
+  }
+  .header-text h1{
+    font-size:1.15rem;
+    color:var(--bordo-oscuro);
+    line-height:1.2;
+  }
+  nav{
+    display:flex;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+  nav a{
+    text-decoration:none;
+    font-weight:600;
+    font-size:.92rem;
+    color:var(--bordo);
+    padding:8px 12px;
+    border-radius:6px;
+    transition:background .2s, color .2s;
+  }
+  nav a:hover{
+    background:var(--bordo);
+    color:var(--blanco);
+  }
+  nav a.nav-cta{
+    background:var(--dorado);
+    color:var(--bordo-oscuro);
+    font-weight:700;
+  }
+  nav a.nav-cta:hover{
+    background:var(--dorado-claro);
+    color:var(--bordo-oscuro);
+  }
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(201,162,39,0.35), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(201,162,39,0.25), transparent 50%),
+      linear-gradient(135deg, var(--bordo-oscuro), var(--bordo) 55%, var(--bordo-claro));
+    color:var(--blanco);
+    padding:72px 0 64px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);
+    pointer-events:none;
+  }
+  .hero-logo{
+    width:120px;
+    height:120px;
+    margin:0 auto 22px;
+    background:var(--blanco);
+    border-radius:50%;
+    padding:8px;
+    box-shadow:var(--sombra), 0 0 0 4px var(--dorado);
+  }
+  .hero-logo img{width:100%; height:100%; object-fit:contain;}
+  .hero h1{
+    font-size:clamp(1.7rem, 4vw, 2.7rem);
+    margin-bottom:14px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.25);
+  }
+  .hero p{
+    max-width:640px;
+    margin:0 auto;
+    font-size:1.08rem;
+    color:rgba(255,255,255,0.92);
+  }
+  .hero .badges{
+    margin-top:28px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .badge{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(230,198,92,0.5);
+    color:var(--blanco);
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.88rem;
+    font-weight:600;
+    backdrop-filter:blur(2px);
+  }
+  .badge strong{color:var(--dorado-claro);}
+
+  /* Sections */
+  section{
+    padding:60px 0;
+  }
+  .section-title{
+    text-align:center;
+    margin-bottom:8px;
+    color:var(--bordo-oscuro);
+    font-size:clamp(1.4rem, 3vw, 1.9rem);
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--texto-suave);
+    max-width:620px;
+    margin:0 auto 40px;
+  }
+  .divider{
+    width:64px;
+    height:4px;
+    background:var(--dorado);
+    border-radius:2px;
+    margin:0 auto 40px;
+  }
+
+  /* Sobre */
+  .sobre{
+    background:var(--blanco);
+  }
+  .sobre-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .sobre-card{
+    background:var(--crema);
+    border-left:5px solid var(--dorado);
+    border-radius:10px;
+    padding:26px 28px;
+    box-shadow:var(--sombra);
+  }
+  .sobre-card h3{
+    color:var(--bordo);
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .sobre-card ul{
+    margin:10px 0 0;
+    padding-left:20px;
+    color:var(--texto-suave);
+  }
+  .sobre-card li{margin-bottom:6px;}
+  .perfil-list{
+    display:grid;
+    gap:16px;
+  }
+  .perfil-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .perfil-icon{
+    flex-shrink:0;
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:var(--bordo);
+    color:var(--dorado-claro);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem;
+    font-weight:700;
+  }
+  .perfil-item h4{
+    color:var(--bordo-oscuro);
+    font-size:1rem;
+    margin-bottom:2px;
+  }
+  .perfil-item p{
+    margin:0;
+    color:var(--texto-suave);
+    font-size:.95rem;
+  }
+
+  /* Plan de estudios */
+  .plan{
+    background:
+      linear-gradient(var(--crema), var(--crema)),
+      linear-gradient(135deg, rgba(110,20,35,0.05), rgba(201,162,39,0.08));
+  }
+  .years{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .year-card{
+    background:var(--blanco);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    display:flex;
+    flex-direction:column;
+    border:1px solid rgba(110,20,35,0.08);
+  }
+  .year-head{
+    background:linear-gradient(120deg, var(--bordo), var(--bordo-oscuro));
+    color:var(--blanco);
+    padding:20px 22px;
+    position:relative;
+  }
+  .year-head .num{
+    font-family:'Poppins', sans-serif;
+    font-size:2.4rem;
+    font-weight:800;
+    color:var(--dorado-claro);
+    line-height:1;
+  }
+  .year-head .label{
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    opacity:.9;
+  }
+  .year-body{
+    padding:20px 22px 24px;
+    flex:1;
+  }
+  .year-body h4{
+    font-size:.82rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--dorado);
+    margin:0 0 10px;
+    border-bottom:1px dashed rgba(201,162,39,0.5);
+    padding-bottom:6px;
+  }
+  .year-body h4:not(:first-child){margin-top:18px;}
+  .year-body ul{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+  }
+  .year-body li{
+    padding:6px 0 6px 22px;
+    position:relative;
+    font-size:.94rem;
+    color:var(--texto);
+    border-bottom:1px solid rgba(0,0,0,0.045);
+  }
+  .year-body li:last-child{border-bottom:none;}
+  .year-body li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:14px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--bordo);
+  }
+  .year-body h4.general{color:var(--bordo);}
+  .general-list li::before{background:var(--dorado);}
+  .plan-foot-note{
+    text-align:center;
+    color:var(--texto-suave);
+    font-size:.88rem;
+    margin-top:28px;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* Galeria */
+  .galeria{background:var(--blanco);}
+  .video-wrap{
+    max-width:800px;
+    margin:0 auto;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    border:3px solid var(--dorado);
+    background:#000;
+  }
+  .video-wrap video{
+    width:100%;
+    display:block;
+    max-height:520px;
+    background:#000;
+  }
+  .video-wrap iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    display:block;
+    border:0;
+  }
+
+  /* CTA / contacto */
+  .cta{
+    background:linear-gradient(135deg, var(--bordo-oscuro), var(--bordo));
+    color:var(--blanco);
+    text-align:center;
+    padding:56px 0;
+  }
+  .cta h2{color:var(--blanco);}
+  .cta p{
+    max-width:560px;
+    margin:0 auto 24px;
+    color:rgba(255,255,255,0.9);
+  }
+  .cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--dorado);
+    color:var(--bordo-oscuro);
+    font-weight:700;
+    padding:14px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    transition:transform .2s;
+  }
+  .cta-btn:hover{transform:translateY(-2px);}
+  .cta-btn-outline{
+    background:transparent;
+    color:var(--blanco);
+    border:2px solid var(--dorado);
+    box-shadow:none;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--texto);
+    color:rgba(255,255,255,0.85);
+    padding:34px 0 26px;
+    text-align:center;
+    font-size:.9rem;
+  }
+  footer .foot-logo{
+    width:44px;
+    height:44px;
+    margin:0 auto 12px;
+    background:var(--blanco);
+    border-radius:50%;
+    padding:4px;
+  }
+  footer strong{color:var(--dorado-claro);}
+  footer .foot-line{margin:4px 0;}
+
+  @media (max-width: 860px){
+    .sobre-grid{grid-template-columns:1fr;}
+    .years{grid-template-columns:1fr;}
+    .header-inner{justify-content:center; text-align:center;}
+    nav{width:100%; justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="images/logo.png" alt="Logo Escuela Técnica Bella Unión 1 - UTU">
+    <div class="header-text">
+      <div class="kicker">UTU · Escuela Técnica 1 "Maestro Técnico Sergio González Olaizola" — Bella Unión</div>
+      <h1>Propuesta educativa: BT Tecnologías de la Información</h1>
+    </div>
+    <nav>
+      <a href="#sobre">El Bachillerato</a>
+      <a href="#plan">Plan de estudios</a>
+      <a href="#galeria">Video</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-cta" href="https://forms.gle/hojAXvpkEUJ4odL79" target="_blank" rel="noopener">Anotarme</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo"><img src="images/logo.png" alt="Logo UTU Bella Unión"></div>
+    <h1>Propuesta educativa: BT Tecnologías de la Información</h1>
+    <p>Un Bachillerato Tecnológico de 3 años que forma jóvenes capaces de programar, dar soporte técnico, administrar redes y desarrollar soluciones informáticas, combinando formación general y una fuerte carga horaria práctica en laboratorio.</p>
+    <div class="badges">
+      <span class="badge"><strong>3</strong> años de duración</span>
+      <span class="badge"><strong>Bachiller</strong> Tecnológico</span>
+      <span class="badge"><strong>UTU</strong> Bella Unión 1</span>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="container">
+    <h2 class="section-title">¿Qué es el BT Tecnologías de la Información?</h2>
+    <div class="divider"></div>
+    <div class="sobre-grid">
+      <div class="sobre-card">
+        <h3>📘 Sobre el bachillerato</h3>
+        <p>
+          El Bachillerato Tecnológico (BT) en Tecnologías de la Información es una opción de Educación Media Superior
+          de la UTU, pensada para estudiantes que ya culminaron el Ciclo Básico. Se cursa en esta Escuela Técnica y
+          combina asignaturas de formación general con una trayectoria tecnológica específica en programación,
+          soporte informático, bases de datos, redes y desarrollo de software.
+        </p>
+        <ul>
+          <li>Duración: 3 años.</li>
+          <li>Fuerte carga horaria en laboratorios de informática.</li>
+          <li>Título obtenido: Bachiller Tecnológico.</li>
+          <li>Habilita la continuidad en tecnicaturas, tecnólogos e ingenierías, o la inserción laboral directa.</li>
+        </ul>
+      </div>
+      <div class="perfil-list">
+        <div class="perfil-item">
+          <div class="perfil-icon">&lt;/&gt;</div>
+          <div>
+            <h4>Programación y desarrollo</h4>
+            <p>Diseño y desarrollo de aplicaciones de software, sitios y sistemas web.</p>
+          </div>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">⌘</div>
+          <div>
+            <h4>Soporte y sistemas operativos</h4>
+            <p>Instalación, configuración y administración de equipos y sistemas.</p>
+          </div>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">⌁</div>
+          <div>
+            <h4>Redes y ciberseguridad</h4>
+            <p>Fundamentos de redes informáticas y buenas prácticas de seguridad.</p>
+          </div>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">▤</div>
+          <div>
+            <h4>Bases de datos</h4>
+            <p>Diseño y gestión de bases de datos para aplicaciones reales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plan" id="plan">
+  <div class="container">
+    <h2 class="section-title">Plan de estudios — esquema por año</h2>
+    <p class="section-sub">Resumen de los espacios curriculares técnico-tecnológicos y de formación general de cada año, según el plan vigente de Educación Media Superior (DGETP-UTU).</p>
+    <div class="divider"></div>
+
+    <div class="years">
+      <div class="year-card">
+        <div class="year-head">
+          <div class="num">1</div>
+          <div class="label">Primer año</div>
+        </div>
+        <div class="year-body">
+          <h4>Formación técnica-tecnológica</h4>
+          <ul>
+            <li>Soporte IT</li>
+            <li>Programación</li>
+            <li>Lógica y Métodos Discretos</li>
+          </ul>
+          <h4 class="general">Formación general</h4>
+          <ul class="general-list">
+            <li>Lengua y Comunicación Multimodal</li>
+            <li>Inglés</li>
+            <li>Matemática</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-head">
+          <div class="num">2</div>
+          <div class="label">Segundo año</div>
+        </div>
+        <div class="year-body">
+          <h4>Formación técnica-tecnológica</h4>
+          <ul>
+            <li>Programación Avanzada</li>
+            <li>Introducción a Bases de Datos</li>
+            <li>Sistemas Operativos</li>
+            <li>Redes Informáticas</li>
+          </ul>
+          <h4>Autonomía curricular</h4>
+          <ul>
+            <li>Tecnologías Digitales</li>
+            <li>Inteligencia Artificial</li>
+          </ul>
+          <h4 class="general">Formación general</h4>
+          <ul class="general-list">
+            <li>Inglés</li>
+            <li>Matemática</li>
+            <li>Matemática CTS</li>
+            <li>Análisis y Producción de Textos</li>
+            <li>Historia Económica</li>
+            <li>Legislación</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-head">
+          <div class="num">3</div>
+          <div class="label">Tercer año</div>
+        </div>
+        <div class="year-body">
+          <h4>Formación técnica-tecnológica</h4>
+          <ul>
+            <li>Programación Full Stack</li>
+            <li>Ingeniería de Software</li>
+            <li>Administración de Sistemas Operativos</li>
+            <li>Tutoría de Proyecto (UTULAB)</li>
+          </ul>
+          <h4>Autonomía curricular</h4>
+          <ul>
+            <li>Ciberseguridad</li>
+            <li>Maquetación para espacios virtuales</li>
+          </ul>
+          <h4 class="general">Formación general</h4>
+          <ul class="general-list">
+            <li>Inglés</li>
+            <li>Filosofía</li>
+            <li>Sociología</li>
+            <li>Emprendedurismo y Gestión</li>
+            <li>Matemática CTS</li>
+            <li>Cálculo</li>
+            <li>Física Mecánica Clásica</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="plan-foot-note">Esquema orientativo elaborado a partir de los programas oficiales de la Educación Media Superior (DGETP-UTU). Puede sufrir ajustes según la resolución vigente para cada año lectivo.</p>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="container">
+    <h2 class="section-title">Video</h2>
+    <p class="section-sub">Conocé más sobre el Bachillerato Tecnológico en Tecnologías de la Información.</p>
+    <div class="divider"></div>
+    <div class="video-wrap">
+      <iframe src="https://drive.google.com/file/d/1nb3a-5qF3p8YFdN1cjr08rAA5NrBVgO2/preview" allow="autoplay" allowfullscreen title="Video BT Tecnologías de la Información"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="container">
+    <h2>¿Te interesa este bachillerato?</h2>
+    <p>Contanos qué curso te interesa y anotate como interesado en el BT Tecnologías de la Información completando esta breve encuesta.</p>
+    <div class="cta-buttons">
+      <a class="cta-btn" href="https://forms.gle/hojAXvpkEUJ4odL79" target="_blank" rel="noopener">Anotarme como interesado/a</a>
+      <a class="cta-btn cta-btn-outline" href="#sobre">Conocer la propuesta</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo"><img src="images/logo.png" alt="Logo UTU"></div>
+  <p class="foot-line"><strong>UTU Bella Unión 1</strong></p>
+  <p class="foot-line">Escuela Técnica 1 "Maestro Técnico Sergio González Olaizola" — Bella Unión</p>
+  <p class="foot-line">Bachillerato Tecnológico en Tecnologías de la Información</p>
+</footer>
+
+</body>
+</html>
